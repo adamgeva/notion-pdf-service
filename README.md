@@ -1,1 +1,1 @@
-# pdf-notion-uploader
+# notion-pdf-service
