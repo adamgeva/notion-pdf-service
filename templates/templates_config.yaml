@@ -1,0 +1,95 @@
+# PDF Templates Configuration
+# 
+# This file defines the templates available for PDF generation and their configurations.
+# 
+# To add a new template:
+# 1. Create a new entry under 'templates' with a unique identifier
+# 2. Provide all required configuration fields as detailed below
+#
+# Template Configuration Fields:
+# - file_name: Name of the PDF template file (must exist in templates directory)
+# - field_mappings: Dictionary mapping Notion field names to PDF form field names
+# - required_notion_fields: List of fields that must exist in the Notion data
+# - conditions: Dictionary of field:value pairs that determine when to use this template
+#
+# Example new template:
+#   new_template_name:
+#     file_name: template.pdf
+#     field_mappings:
+#       notion_field1: pdf_field1
+#       notion_field2: pdf_field2
+#     required_notion_fields:
+#       - notion_field1
+#       - notion_field2
+#     conditions:
+#       type: template_type_name
+
+templates:
+  # Template for individual forms
+  migdal:
+    # Name of the PDF template file in the templates directory
+    file_name: migdal.pdf
+    
+    # Maps Notion field names (keys) to PDF form field names (values)
+    field_mappings:
+      id: text_1efdg          # ID from Notion -> text_1efdg field in PDF
+      name_hebrew: text_2xgca  # Hebrew name -> text_2xgca field in PDF
+      name_english: text_3zmip # English name -> text_3zmip field in PDF
+    
+    # Fields that must be present in the Notion data
+    required_notion_fields:
+      - id
+      - name_hebrew
+      - name_english
+    
+    # Conditions that determine when to use this template
+    # All conditions must match for this template to be selected
+    conditions:
+      provider: migdal
+
+  # Template for business forms
+  form_b:
+    file_name: form_b.pdf
+    field_mappings:
+      company_name: field1  # Company name from Notion -> field1 in PDF
+      address: field2       # Address -> field2 in PDF
+      contact: field3       # Contact info -> field3 in PDF
+    required_notion_fields:
+      - company_name
+      - address
+      - contact
+    conditions:
+      type: business
+
+  # Example template for invoices (commented out - use as reference)
+  # invoice_template:
+  #   file_name: invoice.pdf
+  #   field_mappings:
+  #     invoice_number: number_field
+  #     customer_name: customer_field
+  #     amount: amount_field
+  #     date: date_field
+  #     currency: currency_field
+  #   required_notion_fields:
+  #     - invoice_number
+  #     - customer_name
+  #     - amount
+  #     - date
+  #   conditions:
+  #     type: invoice
+  #     # You can have multiple conditions
+  #     status: draft
+
+# Steps to add a new template:
+# 1. Create your PDF form with form fields
+# 2. Add a new entry under 'templates' with a unique name
+# 3. Set the file_name to match your PDF template file name
+# 4. Create field_mappings to connect Notion fields to PDF form fields
+# 5. List all required_notion_fields that must be present
+# 6. Define conditions that determine when to use this template
+#
+# Notes:
+# - PDF field names must exactly match those in your PDF template
+# - All required_notion_fields must be present in the Notion data
+# - Conditions are matched exactly (field must equal specified value)
+# - Make sure to use consistent field names across your application

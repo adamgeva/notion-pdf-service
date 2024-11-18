@@ -1,0 +1,19 @@
+# Environment
+venv/
+.env
+__pycache__/
+*.pyc
+
+# Secrets
+secrets/
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
